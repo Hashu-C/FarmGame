@@ -1,6 +1,6 @@
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.stream.*;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,48 +15,62 @@ public class TriviaButton extends JPanel implements ActionListener {
     private String correctAnswer;
     
     TriviaButton() {
-        JPanel trivia = new JPanel();
         this.setPreferredSize(new Dimension(GamePanel.SCREEN_WIDTH,GamePanel.SCREEN_HEIGHT));
-		this.setBackground(new Color (142, 108, 76));
+		this.setBackground(new Color (142, 30, 76));
 		this.setFocusable(true);
 
 
         randQuestion = ThreadLocalRandom.current().nextInt(0, numOfLines("Questions.txt") + 1);
+        System.out.println(randQuestion);
         question = getFileLine("Questions.txt", randQuestion);
         answers = getFileLine("Answers.txt",randQuestion);
-        correctAnswer = getFileLine("CorrectAnswer.txt",randQuestion);
+        correctAnswer = getFileLine("CorrectAnswers.txt",randQuestion);
         //draw String quesztion prompt
         //add buttons 1 -4 
         //logic written below 
+        
+
+        
 
     }
+
+    public static void activate(){
+       
+        
+
+    }
+
+    @Override
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-        g.setFont(new Font ("Serif", Font.PLAIN, 12));
-        g.setColor(Color.BLUE);
-        //TODO : set font, color and position
-		g.drawString(question, GamePanel.SCREEN_WIDTH/2, 30);
+        System.out.println("Drawing String");
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Serif", Font.PLAIN, 80));
+        g.drawString(question, 0, 80);
 	}
+
 
     //returns specificec line in a file as a string (later use with scanner del)
     public String getFileLine(String fileName, int lineNum) {
-        int n = lineNum;
-        String result ;
-        try (Stream<String> lines = Files.lines(Paths.get(fileName))) {
-          result = lines.skip(n).findFirst().get();
-        }
-        catch(IOException e){
-          System.out.println(e);
-        }
+        String resultString="";
+        try {
+			Scanner scanner = new Scanner(new File(fileName));
+			for (int i =1; i<lineNum; i++) {
+                resultString = scanner.nextLine();
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		}
+        return resultString;
+	}
 
-        return ""; // did you want it to return result??  -lauren
-    }
 
 
     //returns num of lines in a file..  
     public static int numOfLines(String fileName) {
         Scanner sc = new Scanner(fileName);
-        int lines = 0;
+        int lines = 1;
         try {
             while(sc.next()!=null){
                 lines++;

@@ -50,7 +50,15 @@ public class GameFrame extends JFrame implements ActionListener{
             new ActionListener() {
                 //@Override
                 public void actionPerformed(ActionEvent e) {
+                    p1.setVisible(false);
+                    pCenter.setVisible(false);
+                    TriviaButton triviaGame = new TriviaButton();
+                    triviaGame.setVisible(true);
+                    triviaGame.setFocusable(true);
+                    getContentPane().add(triviaGame, BorderLayout.CENTER);
+                    pack();
                     
+
                 }
             }
         );

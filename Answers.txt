@@ -1,1 +1,7 @@
-change
+ (12), 13, 9, 0
+ 16, 18, 21, (none)
+ (21), 19, 20, 22
+ (sacremento), los-angeles, san-fransisco, fresno
+ 12, (13), 25, 7
+ 48, (72), 67, 70
+ shakespear, (shakespeare), shaekspeare, shakespeer

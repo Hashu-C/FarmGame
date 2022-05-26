@@ -1,21 +1,17 @@
-
-import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.stream.*;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
 public class TriviaButton extends JPanel implements ActionListener {
-    private int randQuestion;
+    private int rand;
     private String question;
-    private String answers;
+    private String answer;
     private String correctAnswer;
     
-    TriviaButton() {
+    TriviaButton() throws FileNotFoundException {
         this.setPreferredSize(new Dimension(GamePanel.SCREEN_WIDTH,GamePanel.SCREEN_HEIGHT));
 		this.setBackground(new Color (142, 30, 76));
 		this.setFocusable(true);
@@ -23,21 +19,21 @@ public class TriviaButton extends JPanel implements ActionListener {
         activate();
         //draw String quesztion prompt
         //add buttons 1 -4 
-        //logic written below 
-        
-
-        
+        //logic written below         
 
     }
 
-    public void activate(){
-        randQuestion = (int)(Math.random()*(numOfLines("Questions.txt")-1)+1);
-        question = getFileLine("Questions.txt", randQuestion);
-        answers = getFileLine("Answers.txt",randQuestion);
-        correctAnswer = getFileLine("CorrectAnswers.txt",randQuestion);
+    public void activate() throws FileNotFoundException{
+        rand = (int)(Math.random()*(numOfLines("Questions.txt")-1)+1);
+        question = getFileLine("Questions.txt", rand);
+        answer = getFileLine("Answers.txt",rand);
+        correctAnswer = getFileLine("CorrectAnswers.txt",rand);
 
-        System.out.println(randQuestion + ": Number chosen with random");
+        System.out.println(rand + ": Number chosen with random");
         System.out.println(question);
+
+        System.out.println(answer);
+        System.out.println("cA: " + correctAnswer);
         
         repaint();
     }
@@ -53,55 +49,35 @@ public class TriviaButton extends JPanel implements ActionListener {
 
 
     //returns specificec line in a file as a string (later use with scanner del)
-    public String getFileLine(String fileName, int lineNum) {
-        String result = "";
-        int count = 0;
+    public static String getFileLine(String fileName, int lineNum) {
+        String resultString = "";
         try {
-          File file = new File(fileName);
-          Scanner sc = new Scanner(file);
-    
-          while(sc.hasNextLine()) {
-            if (count-1 == lineNum){
-                result = sc.nextLine();
-                break;
-            }
-            sc.nextLine();
-            count++;
-
-          }
-          // close scanner
-          sc.close();
-        } catch (Exception e) {
-          e.getStackTrace();
-        }
-
-        return result;
+			Scanner scanner = new Scanner(new File(fileName));
+			for (int i = 0; i < lineNum; i++) {
+                resultString = scanner.nextLine();
+			}
+	
+		} catch (FileNotFoundException e) {
+			System.out.println("broken");
+		}
+        return resultString;
 	}
 
 
 
     //returns num of lines in a file..  
-    public static int numOfLines(String fileName) {
-        int count = 0;
-
+    public static int numOfLines(String fileName) throws FileNotFoundException {
+        Scanner sc = new Scanner(new File(fileName));
+        int lines = 0;
         try {
-          // create a new file object
-          File file = new File("Questions.txt");
-          Scanner sc = new Scanner(file);
-          while(sc.hasNextLine()) {
-            sc.nextLine();
-            count++;
-          }
-          System.out.println("Total Number of Lines: " + count);
-    
-          // close scanner
-          sc.close();
+            while(sc.hasNextLine()){
+                sc.nextLine(); 
+                lines++;
+            }
         } catch (Exception e) {
-          e.getStackTrace();
+            System.out.println(e);
         }
-
-        return count;
-      
+        return lines;    
     }
 
     //When button clicked in frame class set ALL visible to false 
@@ -122,6 +98,7 @@ public class TriviaButton extends JPanel implements ActionListener {
                Scanner scan = new Scanner("JavaTpoint/Abhishek/Male/22");  
   
                scan.useDelimiter("/");  
+
                while(scan.hasNext()){  
                    System.out.println(scan.next());  
                }  

@@ -11,12 +11,17 @@ public class TriviaButton extends JPanel implements ActionListener {
     private String answer;
     private String correctAnswer;
     
-    TriviaButton() throws FileNotFoundException {
+    TriviaButton() {
         this.setPreferredSize(new Dimension(GamePanel.SCREEN_WIDTH,GamePanel.SCREEN_HEIGHT));
 		this.setBackground(new Color (142, 30, 76));
 		this.setFocusable(true);
 
-        activate();
+        try {
+            activate();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         //draw String quesztion prompt
         //add buttons 1 -4 
         //logic written below         

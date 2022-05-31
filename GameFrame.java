@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class GameFrame extends JFrame implements ActionListener{
@@ -8,11 +9,18 @@ public class GameFrame extends JFrame implements ActionListener{
     private JButton grow;
     private JButton harvest;
     private JButton remove;
+    static TriviaButton triviaGame;
+    public static GamePanel pCenter;
+    static JPanel p1;
+
+    public GamePanel getPCenter(){
+        return pCenter;
+    }
     
-	GameFrame(){
+	public GameFrame(){
         //panel creation
-		GamePanel pCenter = new GamePanel();
-        JPanel p1 = new JPanel();
+		pCenter = new GamePanel();
+        p1 = new JPanel();
 
         //grid layout setting
         getContentPane().add(pCenter, BorderLayout.CENTER);
@@ -29,7 +37,7 @@ public class GameFrame extends JFrame implements ActionListener{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    GamePanel.canPlant();
+                    pCenter.canPlant();
                 }
             }
         );
@@ -39,7 +47,7 @@ public class GameFrame extends JFrame implements ActionListener{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    GamePanel.removeLand();
+                    pCenter.removeLand();
                 }
             }
         );
@@ -52,7 +60,7 @@ public class GameFrame extends JFrame implements ActionListener{
                 public void actionPerformed(ActionEvent e) {
                     p1.setVisible(false);
                     pCenter.setVisible(false);
-                    TriviaButton triviaGame = new TriviaButton();
+                    triviaGame = new TriviaButton();
                     triviaGame.setVisible(true);
                     triviaGame.setFocusable(true);
                     getContentPane().add(triviaGame, BorderLayout.CENTER);
@@ -97,4 +105,8 @@ public class GameFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) { 
         //no purpose method but it makes java happy
     } 
+
+
+
+
 }

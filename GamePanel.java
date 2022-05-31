@@ -6,15 +6,21 @@ import java.lang.Math;
 
 public class GamePanel extends JPanel implements ActionListener{
 
-	static final int SCREEN_WIDTH = 1200;
-	static final int SCREEN_HEIGHT = 600;
-	static final int UNIT_SIZE = 60;
-	static final int GAME_UNITS = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_SIZE*UNIT_SIZE);
-	static final int DELAY = 80;
-	public static int x; public static int y; protected int dx;protected int dy;
-	public static ArrayList<Plant> plants = new ArrayList<Plant>();
+	 static final int SCREEN_WIDTH = 1200;
+	 static final int SCREEN_HEIGHT = 600;
+	 static final int UNIT_SIZE = 60;
+	 final int GAME_UNITS = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_SIZE*UNIT_SIZE);
+	 final int DELAY = 80;
+	 protected int dx;
+	 protected int dy;
 	boolean running = false;
 	Timer timer;
+	private  int x; 
+
+	private  int y; 
+
+	private ArrayList<Plant> plants = new ArrayList<Plant>();
+
     
 	GamePanel(){
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -44,8 +50,10 @@ public class GamePanel extends JPanel implements ActionListener{
 		if(running) {
 			//draws plants based on arraylist data so they stay put in their fucking place aND DONT MOVE
 			for(int i = 0; i<plants.size(); i++){
+				g.setColor(plants.get(i).getColorVal());
 				g.fillRect(plants.get(i).xCord, plants.get(i).yCord, UNIT_SIZE*3, UNIT_SIZE*3);
 			}
+			g.setColor(new Color(0,0,0));
 			//grid lines
 			for(int i=0;i<SCREEN_HEIGHT/UNIT_SIZE*2;i++) {
 				g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
@@ -80,21 +88,20 @@ public class GamePanel extends JPanel implements ActionListener{
 	}
 
 
-	public static void canPlant() {
+	public void canPlant() {
 		boolean validLocation = true;
 		for (Plant current : plants){
 			if((Math.abs(x-current.xCord)<180) && (Math.abs(y-current.yCord)<180)){
 				validLocation = false;
 			}
 		}
-		//System.out.println(validLocation);
 		if((x<=1020 && y <=420) && validLocation){
 			System.out.println("Update: stored coordinate data of plant lot");
 			plants.add(new Plant(x,y));
 		} 
 	}
 
-	public static void removeLand(){
+	public  void removeLand(){
 		for (Plant current : plants){
 			if(current.xCord<=x && x<current.xCord+180){
 				if(current.yCord<=y && y<current.yCord+180){
@@ -103,6 +110,19 @@ public class GamePanel extends JPanel implements ActionListener{
 			}
 		}
 	}
+
+	public void updatePlants(){
+		for (Plant current : plants){
+			current.updateProgress();
+		}
+	}
+
+
+
+
+
+
+	
 
 
 	public class MyKeyAdapter extends KeyAdapter{

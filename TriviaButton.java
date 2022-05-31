@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.*;
+
 import java.awt.event.*;
 import java.awt.*;
 
 public class TriviaButton extends JPanel implements ActionListener {
+    boolean correct;
+
     private int rand;
     private String question;
     private String answers;
@@ -17,12 +20,14 @@ public class TriviaButton extends JPanel implements ActionListener {
     JButton b2;
     JButton b3;
     JButton b4;
+    int triesLeft;
     ArrayList<JButton> randomizedButtonList = new ArrayList<JButton>();
 
     TriviaButton() {
         this.setPreferredSize(new Dimension(GamePanel.SCREEN_WIDTH,GamePanel.SCREEN_HEIGHT));
 		this.setBackground(new Color (142, 30, 76));
 		this.setFocusable(true);
+        this.triesLeft = 2;
 
         try {
             activate();
@@ -37,21 +42,68 @@ public class TriviaButton extends JPanel implements ActionListener {
 
     }
 
+
+
     public void buttonAdd(){
         buttonRandomize();
         for (int i = 0; i<randomizedButtonList.size(); i++){
             this.add(randomizedButtonList.get(i));
         }
+
+        for (int i = 0; i<randomizedButtonList.size(); i++){
+            JButton b = randomizedButtonList.get(i);
+            b.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (b.getText().equals(correctAnswer)){
+                        //Plant.updateProgress();   -fix later its really broken - Caleb
+                        //
+                        b.setBackground(Color.green);
+                        //
+                        System.out.println("correct answer clicked");
+                        GameFrame.returnToGame();
+                        correct = true;
+                    } else {
+                        //
+                        b.setBackground(Color.red);
+                       
+                            correct = false;
+ 
+                        //
+                        System.out.println("Wrong asnwer clicked");
+                        triesLeft--;
+                        if (triesLeft == 0) {
+                            GameFrame.returnToGame();
+                        }
+                    }
+
+
+
+                }
+            }
+           );
+        }
+    
+
+
+
     }
+
 
     public void buttonRandomize(){
         ArrayList<JButton> list = new ArrayList<JButton>();
         list.add(b1); list.add(b2); list.add(b3); list.add(b4);
 
-        randomizedButtonList.add(b1);
-        randomizedButtonList.add(b2);
-        randomizedButtonList.add(b3);
-        randomizedButtonList.add(b4);
+        //randomizedButtonList
+        int i = list.size();
+        int r;
+        while ( i == list.size() && i > 0) {
+            r= (int)(Math.random() * list.size());
+            randomizedButtonList.add(list.get(r));
+            list.remove(r);
+            i--;
+        }
         //randomize order into new list for later access
 
     }
@@ -74,8 +126,8 @@ public class TriviaButton extends JPanel implements ActionListener {
         answers = getFileLine("Answers.txt",rand);
         correctAnswer = getFileLine("CorrectAnswers.txt",rand);
 
-        //System.out.println(rand + ": Number chosen with random");
-        //System.out.println(question);
+        System.out.println(rand + ": Number chosen with random");
+        System.out.println(question);
         //System.out.println(answer);
         //System.out.println("cA: " + correctAnswer);
 
@@ -83,7 +135,6 @@ public class TriviaButton extends JPanel implements ActionListener {
         //must be used after buttons have been created using Scanner delimineter
         initilizeButtons(answers);
         buttonAdd();
-        
         repaint();
     }
 
@@ -95,6 +146,8 @@ public class TriviaButton extends JPanel implements ActionListener {
         g.setFont(new Font("Serif", Font.PLAIN, 80));
         g.drawString(question, 0, 80);
 	}
+
+
 
     //returns specificec line in a file as a string (later use with scanner del)
     public static String getFileLine(String fileName, int lineNum) {

@@ -4,19 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 15468c01d384176a73cb3f72675bc1c427e909ed
 import java.awt.event.*;
 import java.awt.*;
 
 public class TriviaButton extends JPanel implements ActionListener {
-<<<<<<< HEAD
     boolean correct; //a Scott invention
-=======
-    boolean correct;
->>>>>>> 15468c01d384176a73cb3f72675bc1c427e909ed
 
     private int rand;
     private String question;
@@ -49,11 +42,7 @@ public class TriviaButton extends JPanel implements ActionListener {
 
 
 
-<<<<<<< HEAD
     public  void buttonAdd(){
-=======
-    public void buttonAdd(){
->>>>>>> 15468c01d384176a73cb3f72675bc1c427e909ed
         buttonRandomize();
         for (int i = 0; i<randomizedButtonList.size(); i++){
             this.add(randomizedButtonList.get(i));
@@ -63,7 +52,6 @@ public class TriviaButton extends JPanel implements ActionListener {
             JButton b = randomizedButtonList.get(i);
             b.addActionListener(
             new ActionListener() {
-<<<<<<< HEAD
                 
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -96,32 +84,6 @@ public class TriviaButton extends JPanel implements ActionListener {
 
                     
 
-=======
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (b.getText().equals(correctAnswer)){
-                        //Plant.updateProgress();   -fix later its really broken - Caleb
-                        //
-                        b.setBackground(Color.green);
-                        //
-                        System.out.println("correct answer clicked");
-                        GameFrame.returnToGame();
-                        correct = true;
-                    } else {
-                        //
-                        b.setBackground(Color.red);
-                       
-                            correct = false;
- 
-                        //
-                        System.out.println("Wrong asnwer clicked");
-                        triesLeft--;
-                        if (triesLeft == 0) {
-                            GameFrame.returnToGame();
-                        }
-                    }
-
->>>>>>> 15468c01d384176a73cb3f72675bc1c427e909ed
 
 
                 }

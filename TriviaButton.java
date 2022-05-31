@@ -20,23 +20,27 @@ public class TriviaButton extends JPanel implements ActionListener {
     JButton b3;
     JButton b4;
     int triesLeft;
+    JPanel pButtons; 
+    JLabel label1;
     ArrayList<JButton> randomizedButtonList = new ArrayList<JButton>();
     TriviaButton() {
         this.setPreferredSize(new Dimension(GamePanel.SCREEN_WIDTH,GamePanel.SCREEN_HEIGHT));
-		this.setBackground(new Color (142, 30, 76));
+		this.setBackground(new Color (154, 211, 247));
+        this.setLayout(new BorderLayout());
 		this.setFocusable(true);
         this.triesLeft = 2;
+        
+        pButtons = new JPanel();
+        pButtons.setFocusable(true);
+        pButtons.setBackground(new Color (154, 211, 247));
+        pButtons.setPreferredSize(new Dimension(100,100));
+        this.add(pButtons, BorderLayout.SOUTH); 
 
         try {
             activate();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-        
-        //add buttons 1 -4 
-        
-        //logic written below         
+        }        
 
     }
 
@@ -45,7 +49,7 @@ public class TriviaButton extends JPanel implements ActionListener {
     public  void buttonAdd(){
         buttonRandomize();
         for (int i = 0; i<randomizedButtonList.size(); i++){
-            this.add(randomizedButtonList.get(i));
+            pButtons.add(randomizedButtonList.get(i));
         }
 
         for (int i = 0; i<randomizedButtonList.size(); i++){
@@ -74,7 +78,6 @@ public class TriviaButton extends JPanel implements ActionListener {
                             try {
                                 Thread.sleep(500);
                             } catch (InterruptedException e1) {
-                                // TODO Auto-generated catch block
                                 e1.printStackTrace();
                             }
 
@@ -95,7 +98,6 @@ public class TriviaButton extends JPanel implements ActionListener {
 
 
     }
-
 
     public void buttonRandomize(){
         ArrayList<JButton> list = new ArrayList<JButton>();
@@ -123,6 +125,12 @@ public class TriviaButton extends JPanel implements ActionListener {
         b3  = new JButton(scan.next());
         b4  = new JButton(scan.next());
 
+        Font f = new Font("Serif", Font.PLAIN, 20);
+        b1.setFont(f); 
+        b2.setFont(f); 
+        b3.setFont(f); 
+        b4.setFont(f); 
+        
         scan.close();  
     }
 
@@ -141,9 +149,18 @@ public class TriviaButton extends JPanel implements ActionListener {
         //must be used after buttons have been created using Scanner delimineter
         initilizeButtons(answers);
         buttonAdd();
-        repaint();
+        //repaint();
+        print();
     }
 
+    public void print() {
+        label1 = new JLabel(question, SwingConstants.CENTER);
+        label1.setBackground(new Color (40,40,40));
+        label1.setFont(new Font("Serif", Font.BOLD, 60)); 
+        this.add(label1,BorderLayout.CENTER);
+    }
+
+    /*
     @Override
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -152,7 +169,7 @@ public class TriviaButton extends JPanel implements ActionListener {
         g.setFont(new Font("Serif", Font.PLAIN, 80));
         g.drawString(question, 0, 80);
 	}
-
+*/
 
 
     //returns specificec line in a file as a string (later use with scanner del)
@@ -193,18 +210,5 @@ public class TriviaButton extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-    }
-                 
-    
+    }               
 }
-
-
-/**
-               Scanner scan = new Scanner("JavaTpoint/Abhishek/Male/22");  
-  
-               scan.useDelimiter("/");  
-
-               while(scan.hasNext()){  
-                   System.out.println(scan.next());  
-               }  
-               scan.close();    */

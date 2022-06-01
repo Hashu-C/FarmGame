@@ -1,12 +1,12 @@
 12
-none
+None
 21
-sacremento
+Sacremento
 13
 72
-shakespeare
-32ft
-blood
+Shakespeare
+32 ft
+Blood
 Vitamin A
 Strawberries
 Oxford University

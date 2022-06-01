@@ -1,18 +1,18 @@
 12,13,9,0
 16,18,21,none
 21,19,20,22
-sacremento,los-angeles,san-fransisco,fresno
+Sacremento,Los Angeles,San Fransisco,Fresno
 12,13,25,7
 48,72,67,70
-shakespear,shakespeare,shaekspeare,shakespeer
+Shakespear,Shakespeare,Shaekspeare,Shakespeer
 20ft,23ft,32ft,37ft
-blood,tofu,soybeans,kelp
+Blood,Tofu,Soybeans,Kelp
 Vitamin A,Vitamin B,Vitamin C,Vitamin D
 Strawberries,Blueberries,Bananas,Avocados
 Oxford University,Black Death,leonardo da vinci,Monsters Inc
 Emu,Lion,Pigeon,Donkey
 Sharks,Trees,Humans,Rats
-0.09
+0.09,1,0.05,0.5
 Antartica,Sahara,Gobi,Outback
 Brown,Blue,Grey,Green
 Pikachu,Bulbasaur,Squirtle,Charmander 

@@ -65,26 +65,21 @@ public class TriviaButton extends JPanel implements ActionListener {
                         //System.out.println("correct answer clicked");
                         b.setBackground(Color.green);
                          c = new Counter(1);
-                         try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
+                         for (JButton x : randomizedButtonList){
+                            x.setEnabled(false);
                         }
                         GameFrame.pCenter.updatePlants();
                     
                     } else {
-
+                        triesLeft--;
                         b.setBackground(Color.red);
                         //System.out.println("Wrong asnwer clicked");
-                        triesLeft--;
-
                         if(triesLeft<=0){
-                             c = new Counter(.4);
-                            try {
-                                Thread.sleep(500);
-                            } catch (InterruptedException e1) {
-                                e1.printStackTrace();
+                            for (JButton x : randomizedButtonList){
+                                x.setEnabled(false);
                             }
+                             c = new Counter(1);
+
 
                         }
 

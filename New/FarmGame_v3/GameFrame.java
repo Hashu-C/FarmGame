@@ -117,6 +117,7 @@ public class GameFrame extends JFrame implements ActionListener{
 
                             //do a thing 
                             x.harvest();
+				updateHarvest();
                         }
                     }
                 }
@@ -155,5 +156,23 @@ public class GameFrame extends JFrame implements ActionListener{
         Plant temp = Plant.getPlant(1,1);
         plant.setText("PLANT ["+temp.name + "] FOR: " + temp.placePrice);
     }
+	
+    public void updateHarvest(){
+        boolean canHarvest = false; 
+        for(Plant x : pCenter.plants) {
+            if (x.readyToHarvest) {
+                canHarvest=true;
+                break;
+            }
+        }
+
+        if (canHarvest){
+            harvest.setEnabled(true);
+        } else {
+            harvest.setEnabled(false);
+        }
+    }
+
+	
 
 }

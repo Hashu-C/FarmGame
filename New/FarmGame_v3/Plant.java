@@ -61,9 +61,13 @@ public class Plant {
 
     //make a update progress upon trivia completion that checks if progress>=3 then updates readyToHarvest
     public void updateProgress(){
-        progress++;
-        if (progress == maxprogress ){
-            readyToHarvest = true;
+        if (progress+1>maxprogress) {
+            progress = progress;
+        } else if (progress+1==maxprogress){
+            progress++;
+            readyToHarvest=true;
+        } else {
+            progress++;
         }
     }
 

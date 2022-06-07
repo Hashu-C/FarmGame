@@ -7,6 +7,13 @@ import java.io.IOException;
 import java.awt.*;
 
 
+//Hi hi Lauren Okay so basically ive lost it 
+//N E ways, heres all thats left to do
+//first : fix the colors... In Plant.java and make them the same as the backgrounds in This class
+//Second Make the text in trivia Button wrap around !
+//and last, we need better transparent images just add the files and change the file name in rarity Panels
+//oh and one more but we need more trivia questions!
+
 public class RarityPanel extends JPanel implements ActionListener{
 
     //Shop Panel will include border layout that contains 6 of these

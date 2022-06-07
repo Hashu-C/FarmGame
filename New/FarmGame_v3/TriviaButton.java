@@ -69,6 +69,8 @@ public class TriviaButton extends JPanel implements ActionListener {
                             x.setEnabled(false);
                         }
                         GameFrame.pCenter.updatePlants();
+			                            GameRunner.frame.updateHarvest();
+
                     
                     } else {
                         triesLeft--;

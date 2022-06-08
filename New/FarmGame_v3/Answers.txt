@@ -43,6 +43,7 @@ Discovering DNA structure,Understanding natural selection,Discovering the mitoch
 Jen Smith,Grace Smith,Jess Smith,Kate Smith
 Orange juice,Caffeine,Water,Sugar
 Pink,Purple,Orange,White
+1,2,3,4
 12,40,14,16
 Kansas City,Springfield,Topeka,Boise
 Ann Arbor,Anne Harbor,Lansing,Detroit

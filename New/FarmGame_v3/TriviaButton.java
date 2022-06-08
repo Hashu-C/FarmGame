@@ -3,7 +3,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
-
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import java.awt.event.*;
 import java.awt.*;
@@ -21,7 +23,7 @@ public class TriviaButton extends JPanel implements ActionListener {
     JButton b4;
     int triesLeft;
     JPanel pButtons; 
-    JLabel label1;
+    JTextPane text;
     ArrayList<JButton> randomizedButtonList = new ArrayList<JButton>();
     TriviaButton() {
         this.setPreferredSize(new Dimension(GamePanel.SCREEN_WIDTH,GamePanel.SCREEN_HEIGHT));
@@ -61,36 +63,24 @@ public class TriviaButton extends JPanel implements ActionListener {
                 public void actionPerformed(ActionEvent e) {
 
                     if (b.getText().equals(correctAnswer)){
-
-                        //System.out.println("correct answer clicked");
                         b.setBackground(Color.green);
                          c = new Counter(1);
                          for (JButton x : randomizedButtonList){
                             x.setEnabled(false);
                         }
                         GameFrame.pCenter.updatePlants();
-			                            GameRunner.frame.updateHarvest();
+			            GameRunner.frame.updateHarvest();
 
-                    
                     } else {
                         triesLeft--;
                         b.setBackground(Color.red);
-                        //System.out.println("Wrong asnwer clicked");
-                        if(triesLeft<=0){
+                        if (triesLeft<=0){
                             for (JButton x : randomizedButtonList){
                                 x.setEnabled(false);
                             }
                              c = new Counter(1);
-
-
                         }
-
                     }
-
-                    
-
-
-
                 }
             }
            );
@@ -114,8 +104,6 @@ public class TriviaButton extends JPanel implements ActionListener {
             list.remove(r);
             i--;
         }
-        //randomize order into new list for later access
-
     }
 
     public void initilizeButtons(String answers){
@@ -143,42 +131,35 @@ public class TriviaButton extends JPanel implements ActionListener {
         correctAnswer = getFileLine("CorrectAnswers.txt",rand);
 
         System.out.println(rand + ": Number chosen with random");
-        //System.out.println(question);
-        //System.out.println(answer);
-        //System.out.println("cA: " + correctAnswer);
-
+        
         //buttonAdd initiates other 2 methods above
         //must be used after buttons have been created using Scanner delimineter
         initilizeButtons(answers);
         buttonAdd();
-        //repaint();
         print();
     }
 
     public void print() {
-        label1 = new JLabel(question, SwingConstants.CENTER);
-        label1.setBackground(new Color (40,40,40));
-        label1.setFont(new Font("Serif", Font.BOLD, 60)); 
-        this.add(label1,BorderLayout.CENTER);
+        text = new JTextPane();
+        text.setBackground(new Color (230,202,216));
+        text.setFont(new Font("Serif", Font.BOLD, 60)); 
+        text.setText(question);
+  
+        StyledDocument doc = text.getStyledDocument();
+        SimpleAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, doc.getLength(), center, false);
+
+        this.add(text,BorderLayout.CENTER);
     }
 
-    /*
-    @Override
-    public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-        System.out.println("Drawing String");
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Serif", Font.PLAIN, 80));
-        g.drawString(question, 0, 80);
-	}
-*/
     public void generateRands() throws FileNotFoundException{
-        rand = (int)(Math.random()*(numOfLines("Questions.txt")-1+1)+1);
+        rand = (int)(Math.random()*(numOfLines("Questions.txt"))+1);
         System.out.println(rand);
     }
 
 
-    //returns specificec line in a file as a string (later use with scanner del)
+    //returns specific line in a file as a string
     public static String getFileLine(String fileName, int lineNum) {
         String resultString = "";
         try {
@@ -193,7 +174,7 @@ public class TriviaButton extends JPanel implements ActionListener {
         return resultString;
 	}
 
-    //returns num of lines in a file..  
+    //returns num of lines in a file
     public static int numOfLines(String fileName) throws FileNotFoundException {
         Scanner sc = new Scanner(new File(fileName));
         int lines = 0;
@@ -207,12 +188,6 @@ public class TriviaButton extends JPanel implements ActionListener {
         }
         return lines;    
     }
-
-    //When button clicked in frame class set ALL visible to false 
-    //(we'll make the panel auto close so no need for exit button)
-    //That panel is used to clear out the other buttons essentailly we need to make It the ONLY panel visible
-    //on this new panel, we call the trivia PANEL which will populate itself with the multiple choice and question
-    //prompt
     @Override
     public void actionPerformed(ActionEvent e) {
 

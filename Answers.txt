@@ -50,3 +50,71 @@ Ann Arbor,Anne Harbor,Lansing,Detroit
 Fruit Loops,Froots Loops,Froot Loops,Fruits Loop
 White-Out,Wite-Out,Wyte-Out,Write-Out
 Double Stuff,Duble Stuff,Duble Stuf,Double Stuf
+CEGBA,CDEFG,GBCAD,CC#DD#E
+16,17,19,98
+Kindle,Litter,Shittens,group
+Stubbs,Steve,Paws,Ricky
+Green,Black,Pink,White
+Black,White,Grey,Pink
+0,20,40,100
+John Wilkes Booth,Josh Wilkes Booth,Jon Wikes Booth,Joshua Wilkens Booth
+1969,1970,1968,1959
+Twtter,Tweeter,Twitters,Twitter
+Richter,Rikter,Riechter,Rikkter
+Skin,Stomach,Tongue,Femur
+Alphred,Ralph,Steff,Scott
+Femur,Skull,Tibia,Knee
+Susuwatari,Soozunosuke,Nezumi,KodomowoKeru
+2/18/1979,4/15/1703,10/18/1432,5/12/1999
+Black,White,Green,Red
+Bloot Clot in the lungs,Polio,Seizures,Tissue Scarring
+Protein in blood,Fat Content,Rombus,A video game term
+Hemophilia,Anemia,Sickle Cell,Thalassemia
+Kidney,Stomach,Brain,Liver
+Christmas,Halloween,Thanksgiving???,Easter:/
+Join in any Reindeer Games,Laugh and Play,Slayyy,Sleep
+Home Alone,The Grinch,NutCracker,Krumpus
+364,24,453,235
+Thanksgiving,Christmas,Halloween,St Patricks Day
+Frank Sinatra,Bill Withers,Louis Armstrong,Scott Dyer
+A song plays,An Ad plays,A trailer plays,nothing
+Parasite,Spritited Away,Ip Man,Veronica
+A child,A code name,A spy,An Enders Game character
+Upside Down,Rightside Up,Inside out,Downside Up
+Bush,Obama,Clinton,Trump
+Jiji,Koro,Neko,Mimi
+Nike,Adidas,Puma,NewBalance
+StateFarm,Geico,JonesBBQ,ASTA
+Geico,StateFarm,NASA,Capitol One
+Capitol One,Chase,Geico,StateFarm
+Hffjks,asfak,asdas,jkjagk
+Pogo the clown,Noodles,Popsy the clown,Bozo the clown
+Berkowitz,Bundy,Gacy,Lopez
+Cornelius,Kernel,Cornswald,Cornelli
+One Day you will have to answer to god and he will not be mericiful,kirby eat,kirby sleep,kirby
+Paprika,Ghost in the Shell,Intro,Eva
+Anyone can cook,Everyone can cook,You can cook,What can you cook
+Kill a man,Fight a man,Make food,Choke a man
+Synesthesia,Sensory Processing Disorder,Glaucoma,Conjunctivitis
+Ab C Eb,Ab F G,Ab B C,Ab Bb Cb
+8mph,12mph,20mph,18mph
+Cranberry,Peaches,Apples,Raspberries
+Lego Figurines,People,Sharks,Subway Stores
+Digest Food,Because they were dumb,On accident,They liked it
+Sid,Bill,Mort,Paul
+3 years,5 years,Until they die,1year
+Lachanophobia,vegetilphobia,regalphobia,raniphobia
+Jousting,Diving,Running,Javelin
+Nightclub Bouncer,Paralegal Intern,Tutor,Drug Dealer
+Allodoxaphobia,Malasophobia,Scottimphobia,Justapohbia
+J,Z,Q,K
+Rhydon,Pikachu,Bulbasaur,Metapod
+23,35,56,9
+1/100th,1/1000th,1/10th,10
+Trees,MilkyWay Stars,People,km^2 of land on Earth
+2500,1000,1500,500
+Bible,Ikea Catalouge,Harry Potter,Quran
+An alligator,A bomb,A pet goat,A head of lettuce
+7,5,3,20
+
+

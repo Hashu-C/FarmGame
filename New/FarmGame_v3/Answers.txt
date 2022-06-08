@@ -9,7 +9,7 @@ Shakespear,Shakespeare,Shaekspeare,Shakespeer
 Blood,Tofu,Soybeans,Kelp
 Vitamin A,Vitamin B,Vitamin C,Vitamin D
 Strawberries,Blueberries,Bananas,Avocados
-Oxford University,Black Death,leonardo da vinci,Monsters Inc
+Oxford University,Black Death,Leonardo Da Vinci,Monsters Inc
 Emu,Lion,Pigeon,Donkey
 Sharks,Trees,Humans,Rats
 0.09,1,0.05,0.5

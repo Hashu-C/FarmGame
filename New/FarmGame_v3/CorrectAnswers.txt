@@ -1,12 +1,12 @@
 12
-none
+None
 21
-sacremento
+Sacremento
 13
-72
-shakespeare
-32ft
-blood
+73
+Shakespeare
+32 ft
+Blood
 Vitamin A
 Strawberries
 Oxford University
@@ -28,3 +28,24 @@ Norway
 Jester
 UW
 A hunk of watered down chunky floss unfit for human consumption
+58
+Fork
+Batman
+Zheng Yi Sao
+100
+League of Legends
+104
+Science Guy
+The mitochondria
+Mitochondria
+Powerhouses
+Discovering the mitochondria
+Jess Smith
+Orange juice
+Pink
+16
+Topeka
+Lansing
+Froot Loops
+Wite-Out
+Double Stuf

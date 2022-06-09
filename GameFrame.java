@@ -20,24 +20,29 @@ public class GameFrame extends JFrame implements ActionListener{
         return pCenter;
     }
     Plant temp;
-
-    
-    
+    public Intro intro;
+    public boolean checker;
     static String centerLayout = BorderLayout.CENTER;
     static String southLayout = BorderLayout.SOUTH;
-	public GameFrame() {
 
+    public void initializeCenter(){
         try {
             shopP = new Shop();
+            intro = new Intro();
         } catch (IOException e1) {
-            System.out.println(e1);
         }
+        //intro.setVisible(true);
         shopP.setVisible(false);
 
-        moneyCount=50999999;
-        //panel creation
-		pCenter = new GamePanel();
+        pCenter = new GamePanel();
         p1 = new JPanel();
+        //pCenter.setVisible(false);
+        //p1.setVisible(false);
+
+
+
+
+        moneyCount=5; //-------------------------------------------------------------------- IMPORTANT SET TO MINIMUIM VALUE OF PLANTS
 
         //grid layout setting
         getContentPane().add(pCenter, BorderLayout.CENTER);
@@ -67,7 +72,7 @@ public class GameFrame extends JFrame implements ActionListener{
 
         	
 		temp = Plant.getPlant(1,1);
-        plant = new JButton("PLANT "+temp.name + " FOR:" + temp.placePrice);
+        plant = new JButton("PLANT "+temp.name.toUpperCase() + " FOR:" + temp.placePrice);
         plant.setFocusable(false);
         plant.addActionListener(
             new ActionListener() {
@@ -122,7 +127,6 @@ public class GameFrame extends JFrame implements ActionListener{
                             //do a thing 
                             x.harvest();
                             updateHarvest();
-				updateHarvest();
                         }
                     }
                 }
@@ -140,7 +144,17 @@ public class GameFrame extends JFrame implements ActionListener{
         grow.setSize(50,50);
         harvest.setSize(50,50);
         remove.setSize(50,50);
-        //frame shit
+    }
+
+
+	public GameFrame() {
+        try {
+            intro = new Intro();
+        } catch (IOException e) {
+        }
+        intro.setVisible(true);
+        getContentPane().add(intro, BorderLayout.CENTER);
+
         this.setTitle("Farm");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -159,7 +173,7 @@ public class GameFrame extends JFrame implements ActionListener{
 
     public void updatePlantName(){
         Plant temp = Plant.getPlant(1,1);
-        plant.setText("PLANT ["+temp.name + "] FOR: " + temp.placePrice);
+        plant.setText("PLANT ["+temp.name.toUpperCase() + "] FOR: " + temp.placePrice);
     }
 	
     public void updateHarvest(){

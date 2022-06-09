@@ -1,5 +1,9 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,24 +17,36 @@ public class RarityPanel extends JPanel implements ActionListener{
     protected JButton exit;
     protected JButton buy;
     private JLabel label;
+    private JTextPane welcome;
     
     //int parameter = the rarity and label
     //rarity int starts at 0, then goes from 1 - 6  
     public RarityPanel(int rarity) throws IOException {
-        //this.setPreferredSize(new Dimension(GamePanel.SCREEN_WIDTH/2,GamePanel.SCREEN_HEIGHT/3));
-		this.setBackground(new Color (154, 211, 247));
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.setFocusable(false);
         
         use = new JButton("Equip");
         use.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         buy = new JButton("Purchase for " + Plant.getPlantMarketPrice(rarity));
         buy.setAlignmentX(Component.CENTER_ALIGNMENT);
-        exit = new JButton("EXIT");
-        Font f = new Font("Serif", Font.PLAIN, 30);
-        exit.setFont(f);
 
+
+        Color exCol = new Color (200,225,225);
+
+        exit = new JButton("EXIT");
         exit.setAlignmentX(Component.CENTER_ALIGNMENT);
+        exit.setFont(new Font("Serif", Font.PLAIN, 30));
+
+        welcome = new JTextPane();
+        welcome.setBackground(exCol);
+        welcome.setFont(new Font("Serif", Font.ITALIC, 30)); 
+        welcome.setText("Welcome to the shop! Select any one crop.");
+        StyledDocument doc = welcome.getStyledDocument();
+        SimpleAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, doc.getLength(), center, false);
 
         this.add(use);
         use.setVisible(false);
@@ -174,10 +190,11 @@ public class RarityPanel extends JPanel implements ActionListener{
         this.add(buy);
 
         if (rarity == 10) {
+            this.add(welcome);
             this.add(exit);
             this.remove(use);
             this.remove(buy);
-            this.setBackground(new Color (200,225,225)); 
+            this.setBackground(exCol); 
         }
 
     }

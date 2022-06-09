@@ -46,11 +46,10 @@ public class Intro extends JPanel{
         this.add(proceed);
         proceed.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                c = new Counter(1);
-                GameRunner.frame.initializeCenter();
-                proceed.setEnabled(false);
-                proceed.setVisible(false);
+                Counter2 s = new Counter2(1);
+                
                 update();
+
 
             }
         });

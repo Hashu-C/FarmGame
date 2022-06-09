@@ -6,14 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.*;
 
-
-//Hi hi Lauren Okay so basically ive lost it 
-//N E ways, heres all thats left to do
-//first : fix the colors... In Plant.java and make them the same as the backgrounds in This class
-//Second Make the text in trivia Button wrap around !
-//and last, we need better transparent images just add the files and change the file name in rarity Panels
-//oh and one more but we need more trivia questions!
-
 public class RarityPanel extends JPanel implements ActionListener{
 
     //Shop Panel will include border layout that contains 6 of these
@@ -21,40 +13,43 @@ public class RarityPanel extends JPanel implements ActionListener{
     protected JButton exit;
     protected JButton buy;
     private JLabel label;
-    Counter c;
+    
+    //int parameter = the rarity and label
+    //rarity int starts at 0, then goes from 1 - 6  
     public RarityPanel(int rarity) throws IOException {
         //this.setPreferredSize(new Dimension(GamePanel.SCREEN_WIDTH/2,GamePanel.SCREEN_HEIGHT/3));
 		this.setBackground(new Color (154, 211, 247));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.setFocusable(false);
-
-        use = new JButton("Equip");
-        buy = new JButton("Purchase");
-        exit = new JButton("EXIT");
         
+        use = new JButton("Equip");
+        use.setAlignmentX(Component.CENTER_ALIGNMENT);
+        buy = new JButton("Purchase for " + Plant.getPlantMarketPrice(rarity));
+        buy.setAlignmentX(Component.CENTER_ALIGNMENT);
+        exit = new JButton("EXIT");
+        Font f = new Font("Serif", Font.PLAIN, 30);
+        exit.setFont(f);
 
-            label = new JLabel("Purchase for:" +  Plant.getPlantMarketPrice(rarity));
-            this.add(label);
+        exit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        this.add(buy);
         this.add(use);
         use.setVisible(false);
 
         use.addActionListener(
             new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e){
+                public void actionPerformed(ActionEvent e) {
                     Plant.setPlantInUse(rarity);
                     GameRunner.frame.updatePlantName();
-
                 }
         });
         buy.addActionListener(
             new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e){
-                    if(GameRunner.frame.moneyCount>=Plant.getPlantMarketPrice(rarity)){
+                public void actionPerformed(ActionEvent e) {
+                    if (GameRunner.frame.moneyCount>=Plant.getPlantMarketPrice(rarity)) {
 
-                        //System.out.println("pruchased");
+                        System.out.println("pruchased");
                         GameRunner.frame.moneyCount-=Plant.getPlantMarketPrice(rarity);
                         GameRunner.frame.money.setText("Money: " + Integer.toString(GameRunner.frame.moneyCount));
                         use.setVisible(true);
@@ -66,131 +61,131 @@ public class RarityPanel extends JPanel implements ActionListener{
         exit.addActionListener(
             new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e){
-                    c = new Counter(0);
+                public void actionPerformed(ActionEvent e) {
+                    Counter c = new Counter(0);
                 }
         });
 
-
-
         if (rarity == 0) {
-            //rice
             JLabel name = new JLabel("Grass");
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(name);
-            BufferedImage goguma = ImageIO.read(new File("goguma.jpg"));
-            Image i = goguma.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+            BufferedImage grass = ImageIO.read(new File("grass.png"));
+            Image i = grass.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(i);
             JLabel picLabel = new JLabel(ii);
-
-            buy.setVisible(false);
-            use.setVisible(true);
+            picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(picLabel);
-            this.setBackground(new Color (3, 250, 0,250));
-            //picLabel.setBounds(); 
-            
+            this.setBackground(new Color (140,170,240));
         }
 
         if (rarity == 1) {
-            //rice
             JLabel name = new JLabel("Rice");
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(name);
-            BufferedImage goguma = ImageIO.read(new File("rice.png"));
-            Image i = goguma.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+            BufferedImage rice = ImageIO.read(new File("rice.png"));
+            Image i = rice.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(i);
             JLabel picLabel = new JLabel(ii);
+            picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(picLabel);
-            this.setBackground(new Color (3, 157, 252,250));
-            //picLabel.setBounds(); 
+            this.setBackground(new Color (210,205,150));
         }
+
         if (rarity == 2) {
-            //sweet p 
             JLabel name = new JLabel("Sweet Potato");
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(name);
-            BufferedImage goguma = ImageIO.read(new File("goguma.jpg"));
+            BufferedImage goguma = ImageIO.read(new File("gogums.png"));
             Image i = goguma.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(i);
             JLabel picLabel = new JLabel(ii);
+            picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(picLabel);
-            this.setBackground(new Color (250, 115, 2,250));
-            //picLabel.setBounds(); 
+            this.setBackground(new Color (192,158,208));
         }
+
         if (rarity == 3) {
-            //cabba
             JLabel name = new JLabel("Cabbage");
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(name);
-            BufferedImage goguma = ImageIO.read(new File("nappaCabbage.png"));
-            Image i = goguma.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+            BufferedImage cab = ImageIO.read(new File("cabbage.png"));
+            Image i = cab.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(i);
             JLabel picLabel = new JLabel(ii);
+            picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(picLabel);
-            this.setBackground(new Color (0, 250, 140,250));
-            //picLabel.setBounds(); 
+            this.setBackground(new Color (170,208,150));
         }
+
         if (rarity == 4) {
-            //edam
             JLabel name = new JLabel("Edamame");
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(name);
-            BufferedImage goguma = ImageIO.read(new File("edamame.png"));
-            Image i = goguma.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+            BufferedImage edam = ImageIO.read(new File("edamame.png"));
+            Image i = edam.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(i);
             JLabel picLabel = new JLabel(ii);
-            this.add(picLabel);
-            //picLabel.setBounds(); 
-            this.setBackground(new Color (250 , 250, 0,250));
+            picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(picLabel); 
+            this.setBackground(new Color (112,195,113));
         }
+
         if (rarity == 5) {
             JLabel name = new JLabel("Papaya");
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(name);
-            //papay
-            BufferedImage goguma = ImageIO.read(new File("papaya.png"));
-            Image i = goguma.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+            BufferedImage pap = ImageIO.read(new File("papaya.png"));
+            Image i = pap.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(i);
             JLabel picLabel = new JLabel(ii);
+            picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(picLabel);
-            this.setBackground(new Color (250, 40, 0,250));
-            //picLabel.setBounds(); 
+            this.setBackground(new Color (235,175,90));
         }
+
         if (rarity == 6) {
-            //nectar
             JLabel name = new JLabel("Nectarine");
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(name);
-            BufferedImage goguma = ImageIO.read(new File("nectarine.png"));
-            Image i = goguma.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+            BufferedImage nect = ImageIO.read(new File("nectarine.png"));
+            Image i = nect.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(i);
             JLabel picLabel = new JLabel(ii);
+            picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(picLabel);
-            this.setBackground(new Color (160, 20, 250,250));
-            //picLabel.setBounds(); 
+            this.setBackground(new Color (240,175,215));
+            
         }
+
         if (rarity == 7) {
-            //nectar
             JLabel name = new JLabel("Mango");
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(name);
-            BufferedImage goguma = ImageIO.read(new File("mango.jpg"));
-            Image i = goguma.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+            BufferedImage mango = ImageIO.read(new File("mango.png"));
+            Image i = mango.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(i);
             JLabel picLabel = new JLabel(ii);
+            picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(picLabel);
-            this.setBackground(new Color (160, 20, 0,250));
-            //picLabel.setBounds(); 
+            this.setBackground(new Color (237,237,130));
         }
+
+        this.add(buy);
+
         if (rarity == 10) {
             this.add(exit);
             this.remove(use);
             this.remove(buy);
-            this.setBackground(new Color (0, 0, 0,0));
-            //picLabel.setBounds(); 
+            this.setBackground(new Color (200,225,225)); 
         }
 
     }
 
     public void actionPerformed(ActionEvent e){
-
     }
 
     public void displayEquip() {
         this.remove(label);
     }
-
-
 }

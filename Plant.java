@@ -25,8 +25,6 @@ public class Plant {
     static int plantInUse = 0;
     int harvestPrice;
 
-    int marketValue;
-
 
     public Plant(String name,int x, int y, int width, int length, int rColor, int gColor, int bColor, int placePrice, int harvestPrice,int maxprogress){
         this.name = name;
@@ -92,54 +90,54 @@ public class Plant {
     //returns market value only used in one instance 
     public static int getPlantMarketPrice(int rarity) {
         if (rarity == 0) {
-   
+            return 20;
         }
         if (rarity == 1) {
-            
+            return 45;
         }
         if (rarity == 2) {
-            
+            return 120;
         }
         if (rarity == 3) {
-            
+            return 245;
         }
         if (rarity == 4) {
-            
+            return 420;
         }
         if (rarity == 5) {
-            
+            return 645;
         }
         if (rarity == 6) {
-            
+            return 920;
         }
         if (rarity == 7) {
-            
+            return 1245;
         }
         return 0;
     }
 
     public static Plant getPlant(int Hori, int Vert) {
-        Plant temp = new Plant("grass", Hori, Vert, 3, 3, 140,170,240, 5, 1,3 );
+        Plant temp = new Plant("grass", Hori, Vert, 4, 4, 140,170,240, 5, 2,3 );
         if(Plant.getPlantInUse()==1){
-             temp =new Plant("rice", Hori, Vert,3, 3, 210, 205, 150, 5, 5, 3);
+             temp =new Plant("rice", Hori, Vert,1, 1, 210, 205, 150, 10, 5, 4);
         }
         if(Plant.getPlantInUse()==2){
-             temp =new Plant("sweet potato",Hori,Vert,3, 3, 192,158,208, 5,5, 3);
+             temp =new Plant("sweet potato",Hori,Vert,2, 2, 192,158,208, 15,8, 5);
         }
         if(Plant.getPlantInUse()==3){
-             temp =new Plant("cabbage",Hori,Vert,3, 3, 170,208,150, 5,5, 3);
+             temp =new Plant("cabbage",Hori,Vert,2, 2, 170,208,150, 20,11, 6);
         }
         if(Plant.getPlantInUse()==4){
-             temp =new Plant("edamme",Hori,Vert,3, 3, 112,195,113, 5, 5,3);
+             temp =new Plant("edamame",Hori,Vert,3, 3, 112,195,113, 25, 14,7);
         }
         if(Plant.getPlantInUse()==5){
-             temp =new Plant("papaya",Hori,Vert,3, 3, 235,175,90, 5,5, 3);
+             temp =new Plant("papaya",Hori,Vert,3, 3, 235,175,90, 30,17, 8);
         }
         if(Plant.getPlantInUse()==6){
-             temp =new Plant("nectarines",Hori,Vert,3, 3, 240,175,215, 5, 5,3);
+             temp =new Plant("nectarine",Hori,Vert,4, 4, 240,175,215, 35, 20,9);
         }
         if (Plant.getPlantInUse() == 7){
-            temp = new Plant("mango",Hori,Vert,3,3,237,237,130,5,5,3);
+            temp = new Plant("mango",Hori,Vert,4,4,237,237,130,40,23,10);
         }
         return temp;
     }

@@ -36,13 +36,14 @@ public class GameFrame extends JFrame implements ActionListener{
 
         pCenter = new GamePanel();
         p1 = new JPanel();
+        pCenter.setFocusable(true);
         //pCenter.setVisible(false);
         //p1.setVisible(false);
 
 
 
 
-        moneyCount=5; //-------------------------------------------------------------------- IMPORTANT SET TO MINIMUIM VALUE OF PLANTS
+        moneyCount=20; //-------------------------------------------------------------------- IMPORTANT SET TO MINIMUIM VALUE OF PLANTS
 
         //grid layout setting
         getContentPane().add(pCenter, BorderLayout.CENTER);
@@ -144,6 +145,13 @@ public class GameFrame extends JFrame implements ActionListener{
         grow.setSize(50,50);
         harvest.setSize(50,50);
         remove.setSize(50,50);
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
+		this.pack();
+		this.setVisible(true);
+		this.setLocationRelativeTo(null);
+
     }
 
 
@@ -152,10 +160,11 @@ public class GameFrame extends JFrame implements ActionListener{
             intro = new Intro();
         } catch (IOException e) {
         }
-        intro.setVisible(true);
-        getContentPane().add(intro, BorderLayout.CENTER);
 
+        getContentPane().add(intro, BorderLayout.CENTER);
+        intro.setFocusable(false);
         this.setTitle("Farm");
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.pack();

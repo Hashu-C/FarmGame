@@ -33,12 +33,14 @@ class Counter implements Runnable {
         GameFrame.p1.setVisible(true);
         try {
             GameFrame.triviaGame.setVisible(false);
+            GameRunner.frame.intro.setVisible(false);
         } catch (Exception e ){
 
         }
         GameRunner.frame.shopP.setVisible(false);
         GameRunner.frame.getContentPane().add(GameFrame.pCenter, GameFrame.centerLayout);
 		GameRunner.frame.getContentPane().add(GameFrame.p1,GameFrame.southLayout);
+        GameRunner.frame.p1.setFocusable(false);
         GameRunner.frame.pack();
         
 

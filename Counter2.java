@@ -1,10 +1,14 @@
-class Counter2 implements Runnable {
+import javax.swing.JPanel;
+
+class Counter2 extends JPanel implements Runnable {
 
     double waitingTime = 0;
     Thread myCounter = new Thread(this);
 
+
     public Counter2(double waitingTime)
     {
+        
         this.waitingTime = waitingTime;
         new Thread(this).start();
     }
@@ -19,16 +23,16 @@ class Counter2 implements Runnable {
 
             try {
 
-                Thread.sleep(1000);
+                Thread.sleep(10);
                 //System.out.println(waitingTime);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+
             }
         } while (waitingTime >= 0);
 
 
      
-
+        GameRunner.frame.intro.setVisible(false);
         GameRunner.frame.initializeCenter();
         Counter c = new Counter(0);
     }

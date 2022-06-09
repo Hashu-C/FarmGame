@@ -89,9 +89,7 @@ public class Plant {
     
     //returns market value only used in one instance 
     public static int getPlantMarketPrice(int rarity) {
-        if (rarity == 0) {
-            return 20;
-        }
+
         if (rarity == 1) {
             return 45;
         }
@@ -117,27 +115,27 @@ public class Plant {
     }
 
     public static Plant getPlant(int Hori, int Vert) {
-        Plant temp = new Plant("grass", Hori, Vert, 4, 4, 140,170,240, 5, 2,3 );
+        Plant temp = new Plant("grass", Hori, Vert, 4, 4, 140,170,240, 5, 2,3);
         if(Plant.getPlantInUse()==1){
              temp =new Plant("rice", Hori, Vert,1, 1, 210, 205, 150, 10, 5, 4);
         }
         if(Plant.getPlantInUse()==2){
-             temp =new Plant("sweet potato",Hori,Vert,2, 2, 192,158,208, 15,8, 5);
+             temp =new Plant("sweet potato",Hori,Vert,2, 2, 192,158,208, 15,8, 3);
         }
         if(Plant.getPlantInUse()==3){
-             temp =new Plant("cabbage",Hori,Vert,2, 2, 170,208,150, 20,11, 6);
+             temp =new Plant("cabbage",Hori,Vert,2, 2, 170,208,150, 20,11, 5);
         }
         if(Plant.getPlantInUse()==4){
-             temp =new Plant("edamame",Hori,Vert,3, 3, 112,195,113, 25, 14,7);
+             temp =new Plant("edamame",Hori,Vert,3, 3, 112,195,113, 25, 14,4);
         }
         if(Plant.getPlantInUse()==5){
-             temp =new Plant("papaya",Hori,Vert,3, 3, 235,175,90, 30,17, 8);
+             temp =new Plant("papaya",Hori,Vert,3, 3, 235,175,90, 30,17, 4);
         }
         if(Plant.getPlantInUse()==6){
-             temp =new Plant("nectarine",Hori,Vert,4, 4, 240,175,215, 35, 20,9);
+             temp =new Plant("nectarine",Hori,Vert,4, 4, 240,175,215, 35, 20,5);
         }
         if (Plant.getPlantInUse() == 7){
-            temp = new Plant("mango",Hori,Vert,4,4,237,237,130,40,23,10);
+            temp = new Plant("mango",Hori,Vert,4,4,237,237,130,40,23,3);
         }
         return temp;
     }

@@ -116,5 +116,3 @@ Trees,MilkyWay Stars,People,km^2 of land on Earth
 Bible,Ikea Catalouge,Harry Potter,Quran
 An alligator,A bomb,A pet goat,A head of lettuce
 7,5,3,20
-
-

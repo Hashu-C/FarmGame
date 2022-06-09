@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 public class Intro extends JPanel{
     
     JTextPane text;
-    String message = "Welcome to the Farm Game: Plant crops and answer trivia questions using [GROW] to nurture crops and eventually harvest them! Then of course, use your new wealth to buy even better plants at the [Money] Shop";
+    String message = "Welcome to the Farm Game: Plant crops and answer trivia questions using [GROW] to nurture crops and eventually harvest them! Then of course, use your new wealth to buy even better plants at the [MONEY] Shop";
     JButton proceed;
     Counter c;
     JPanel pCenter;
@@ -46,8 +46,8 @@ public class Intro extends JPanel{
         this.add(proceed);
         proceed.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                Counter2 s = new Counter2(1);
-                
+                GameRunner.frame.initializeCenter();
+
                 update();
 
 
@@ -72,6 +72,7 @@ public class Intro extends JPanel{
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
 
         this.add(text,BorderLayout.SOUTH);
+        text.setEditable(false);
     }
 
 
